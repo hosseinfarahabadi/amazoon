@@ -1,28 +1,29 @@
-import React from 'react';
-import Head from 'next/head';
-import NextLink from 'next/link'
-import { AppBar, Container, Link, Toolbar, Typography } from '@mui/material';
-import useStyle from '../utiles/styles';
+import React from "react";
+import Head from "next/head";
+import NextLink from "next/link";
+import { AppBar, Container, Link, Toolbar, Typography } from "@mui/material";
+import useStyle from "../utiles/styles";
 
-export default function Layout({ children }) {
+export default function Layout({ description, title, children }) {
   const classess = useStyle();
   return (
     <div>
       <Head>
-        <title>Amazoon</title>
+        <title>{title ? `${title}-Amazoon` : "Amazoon"}</title>
+        {description && <meta name="description" content={description}></meta>}
       </Head>
       <AppBar position="static" className={classess.navbar}>
         <Toolbar>
-          <NextLink href='/' passHref>
+          <NextLink href="/" passHref>
             <Link>
-            <Typography className={classess.brand}>amazoon</Typography>
+              <Typography className={classess.brand}>amazoon</Typography>
             </Link>
           </NextLink>
           <div className={classess.grow}></div>
-          <NextLink href='/card' passHref>
+          <NextLink href="/card" passHref>
             <Link>card</Link>
           </NextLink>
-          <NextLink href='/login' passHref>
+          <NextLink href="/login" passHref>
             <Link>login</Link>
           </NextLink>
         </Toolbar>
