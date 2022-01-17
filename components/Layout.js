@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
-import { AppBar, Container, Toolbar, Typography } from '@mui/material';
+import NextLink from 'next/link'
+import { AppBar, Container, Link, Toolbar, Typography } from '@mui/material';
 import useStyle from '../utiles/styles';
 
 export default function Layout({ children }) {
@@ -12,7 +13,18 @@ export default function Layout({ children }) {
       </Head>
       <AppBar position="static" className={classess.navbar}>
         <Toolbar>
-          <Typography>amazoon</Typography>
+          <NextLink href='/' passHref>
+            <Link>
+            <Typography className={classess.brand}>amazoon</Typography>
+            </Link>
+          </NextLink>
+          <div className={classess.grow}></div>
+          <NextLink href='/card' passHref>
+            <Link>card</Link>
+          </NextLink>
+          <NextLink href='/login' passHref>
+            <Link>login</Link>
+          </NextLink>
         </Toolbar>
       </AppBar>
       <Container className={classess.main}>{children}</Container>
