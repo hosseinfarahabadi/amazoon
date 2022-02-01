@@ -6,14 +6,14 @@ import {
   List,
   ListItem,
   Typography,
-} from "@mui/material";
-import { useRouter } from "next/router";
-import React from "react";
-import Layout from "../../components/Layout.js";
-import data from "../../utiles/data.js";
-import NextLink from "next/link";
-import useStyle from "../../utiles/styles.js";
-import Image from "next/image";
+} from '@mui/material';
+import { useRouter } from 'next/router';
+import React from 'react';
+import Layout from '../../components/Layout.js';
+import data from '../../utiles/data.js';
+import NextLink from 'next/link';
+import useStyle from '../../utiles/styles.js';
+import Image from 'next/image';
 
 export default function productScreen() {
   const classess = useStyle();
@@ -28,7 +28,7 @@ export default function productScreen() {
       <div className={classess.section}>
         <NextLink href="/" passHref>
           <Link>
-            <Typography>back to product</Typography>{" "}
+            <Typography>back to product</Typography>{' '}
           </Link>
         </NextLink>
       </div>
@@ -45,7 +45,9 @@ export default function productScreen() {
         <Grid item md={3} xs={12}>
           <List>
             <ListItem>
-              <Typography component="h1">{product.name}</Typography>
+              <Typography component="h1" variant="h1">
+                {product.name}
+              </Typography>
             </ListItem>
             <ListItem>
               <Typography>category : {product.category}</Typography>
@@ -83,7 +85,7 @@ export default function productScreen() {
                   </Grid>
                   <Grid item xs={6}>
                     <Typography>
-                      {product.countInStock ? "in stock" : "unavailabel"}
+                      {product.countInStock ? 'in stock' : 'unavailabel'}
                     </Typography>
                   </Grid>
                 </Grid>
