@@ -25,13 +25,13 @@ export default function Layout({ description, title, children }) {
         fontWeight: 400,
         margin: '1rem 0',
       },
-      palette: {
-        primary: {
-          main: '#f0c000',
-        },
-        secondary: {
-          main: '#208080',
-        },
+    },
+    palette: {
+      primary: {
+        main: '#f0c000',
+      },
+      secondary: {
+        main: '#208080',
       },
     },
   });
