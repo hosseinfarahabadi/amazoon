@@ -7,15 +7,18 @@ import {
   CardMedia,
   Grid,
   Typography,
-} from "@mui/material";
-import Layout from "../components/Layout";
-import data from "../utiles/data.js";
-import NextLink from "next/link";
+} from '@mui/material';
+import Layout from '../components/Layout';
+import data from '../utiles/data.js';
+import NextLink from 'next/link';
 
 export default function Home() {
   return (
     <Layout>
       <div>
+        <Typography variant="h1" component="h1" gutterBottom>
+          Next.js example
+        </Typography>
         <h1>products</h1>
         <Grid container spacing={3}>
           {data.products.map((product) => (

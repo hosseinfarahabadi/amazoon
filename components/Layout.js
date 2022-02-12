@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import {
@@ -6,13 +6,19 @@ import {
   Container,
   CssBaseline,
   Link,
+  Switch,
   Toolbar,
   Typography,
 } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import useStyle from '../utiles/styles';
+import { Store } from '../utiles/Store';
+import Cookies from 'js-cookie';
 
 export default function Layout({ description, title, children }) {
+  const { state, dispatch } = useContext(Store);
+  const { darkMode } = state;
+  console.log(darkMode);
   const theme = createTheme({
     typography: {
       h1: {
@@ -27,6 +33,7 @@ export default function Layout({ description, title, children }) {
       },
     },
     palette: {
+      mode: darkMode ? 'dark' : 'light',
       primary: {
         main: '#f0c000',
       },
@@ -36,6 +43,11 @@ export default function Layout({ description, title, children }) {
     },
   });
   const classess = useStyle();
+  const darkModeHandler = () => {
+    dispatch({ type: darkMode ? 'DARK_MODE_OFF' : 'DARK_MODE_ON' });
+    const newDarkMode = !darkMode;
+    Cookies.set('darkMode', newDarkMode ? 'on' : 'off');
+  };
   return (
     <div>
       <Head>
@@ -52,6 +64,7 @@ export default function Layout({ description, title, children }) {
               </Link>
             </NextLink>
             <div className={classess.grow}></div>
+            <Switch checked={darkMode} onChange={darkModeHandler}></Switch>
             <NextLink href="/card" passHref>
               <Link>card</Link>
             </NextLink>
